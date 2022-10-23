@@ -1,0 +1,19 @@
+Обновление cashserv до qt4 Ubuntu 18
+	- удалить базу данных cashsrv запустить скрипт createDB.sql для исправления на utf8. Исправление кодировки после загрузки кирилицы 
+	- внести изменения в /etc/apparmor.d/usr.sbin.mysqld , добавить строчку /home/username/** rw , # sudo /etc/init.d/apparmor reload, 
+		убедиться, что есть правла на папку out для других пользователей(mysql)
+		- решение проблемы ошибки ERROR 1(HY000) at line 2: Can't create/write to file '/home/osboxes/develop/cashserv/bin/out/BAD_box_0080787888.xls'
+		 (Errcode: 13 - Permission denied)
+		-Исправление ERROR 1290 (HY000) at line 2: The MySQL server is running with the --secure-file-priv
+	
+Files:
+loaddatainfile - файл содержит настройки подключения к фтп серверу и запускается программой
+execload- файл запускается loaddatainfile осуществляет обнолвение справочников и загр с фтп
+updatedaemon - необходимо шедулить по крону из под рута для обновления структруы базы и скриптов
+cashserv- программа сверки накладных
+uploadintofile - скрипт выгрузки накладных плучает параметры от программы
+cashsrv_db.sql - стурктура базы данных содержит хранимые процедуры
+update.zip - содержит execload, cashserv, uploaddataintofile, cashsrv_db.sql эти файлы необходимы для обновления 
+и используются скриптом обновления updatedaemon
+Для обновления необходимо выложить файл update.zip в папку фтп сервера, на которую настроен скрипт обновления
+

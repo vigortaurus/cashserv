@@ -1,0 +1,1 @@
+ALTER TABLE `cashsrv`.`document_h_cur` ADD COLUMN `box_cnt` INT  NOT NULL DEFAULT 0 AFTER `textstatus`;

@@ -1,0 +1,65 @@
+use cashsrv;
+DELIMITER $$
+DROP trigger IF EXISTS cashsrv.err_status;
+/*CREATE DEFINER=`root`@`localhost` trigger err_status after update on document_t_cur*/
+CREATE  TRIGGER err_status after UPDATE ON document_t_cur
+FOR EACH ROW 
+BEGIN
+	set @cnt = 0;
+	set @quant_fact = ifnull(OLD.quant_fact,0);
+	
+	    if NEW.quant_fact > NEW.quant then
+	    	    UPDATE box_cur SET textstatus = 'error' , flag = 2;				/*ошбика. кол во по факту превысило учет*/
+		    UPDATE box_barcod_cur_t SET flag = if(NEW.flag=4,4,2) 
+		    where barcod in (select barcod from box_cur);
+	    else 
+		if NEW.quant_fact < OLD.quant_fact then					/*пользователь уменьшил кол во*/
+		    select count(*) into @cnt from document_t_cur where quant_fact > quant;	/*проверка на ошибки: есть ли превышение факта над учетом*/
+		    if @cnt = 0 then  							/*ошибок нет*/
+			UPDATE box_cur SET textstatus = 'ok' , flag =3;
+			UPDATE box_barcod_cur_t SET flag = 3  
+			where  barcod in (select barcod from box_cur);
+		    else
+			select count(*) into @cnt from document_t_cur where quant_fact > quant and flag =4;
+			if @cnt >0 then
+			    UPDATE box_cur SET textstatus = 'error' , flag = 4;
+			    UPDATE box_barcod_cur_t SET flag = 4 
+			    where barcod in (select barcod from box_cur);
+			else
+			    select count(*) into @cnt from document_t_cur where quant_fact > quant and flag =2;
+			    if @cnt > 0 then
+				UPDATE box_cur SET textstatus = 'error' , flag = 2;
+				UPDATE box_barcod_cur_t SET flag = 2 
+				where barcod in (select barcod from box_cur);
+			    end if;
+			end if;
+		    end if;
+		end if;
+	    end if;
+	
+	
+	UPDATE box_barcod_cur_t SET quant = 
+	case
+	    when quant + (NEW.quant_fact - @quant_fact) >=0 then quant + (NEW.quant_fact - @quant_fact)  
+    	    when quant + (NEW.quant_fact - @quant_fact) < 0 then quant
+	end
+	where  barcod in (select barcod from box_cur);
+	
+END;
+$$
+DELIMITER ;
+DELIMITER $$
+DROP trigger IF EXISTS cashsrv.err_status_ins;
+CREATE  TRIGGER err_status_ins after  insert ON document_t_cur
+FOR EACH ROW 
+BEGIN
+	if NEW.quant_fact > NEW.quant then
+		UPDATE box_cur SET textstatus = 'error' , flag = 4;				/*ошбика. кол во по факту превысило учет*/
+		UPDATE box_barcod_cur_t SET flag = 4 , quant = quant + NEW.quant_fact
+		where barcod in (select barcod from box_cur);
+	end if;
+END;
+$$
+DELIMITER ;
+
+show triggers;

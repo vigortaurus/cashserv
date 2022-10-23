@@ -1,0 +1,4 @@
+ALTER TABLE `cashsrv`.`document_t_cur` ADD COLUMN `quant_breach` integer  AFTER `complarea`;
+status`,
+ ADD COLUMN `storplace` VARCHAR(20)  NOT NULL AFTER `numstor`,
+ ADD COLUMN `complarea` VARCHAR(20)  NOT NULL AFTER `storplace`;

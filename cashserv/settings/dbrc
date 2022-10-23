@@ -1,0 +1,7 @@
+[General]
+DB_AWPS_DBNAME=cashsrv
+DB_AWPS_DRIVER=QMYSQL3
+DB_AWPS_HOST=localhost
+DB_AWPS_PASSWD=
+DB_AWPS_USER=root
+

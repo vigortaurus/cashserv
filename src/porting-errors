@@ -1,0 +1,257 @@
+debian@debian:~/develop/cashserv4/src$ make
+g++ -c -pipe -O2 -D_REENTRANT -Wall -W -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtSql -I/usr/include/qt4/Qt3Support -I/usr/include/qt4 -I/usr/X11R6/include -I. -I. -o main.o main.cpp
+g++ -c -pipe -O2 -D_REENTRANT -Wall -W -DQT_NO_DEBUG -DQT_QT3SUPPORT_LIB -DQT3_SUPPORT -DQT_SQL_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtSql -I/usr/include/qt4/Qt3Support -I/usr/include/qt4 -I/usr/X11R6/include -I. -I. -o mainwindowder.o mainwindowder.cpp
+mainwindowder.cpp:35:21: error: qbutton.h: No such file or directory
+mainwindowder.cpp: In constructor ‘mainwindowder::mainwindowder(QWidget*, const char*, Qt::WFlags, QString)’:
+mainwindowder.cpp:90: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:91: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:95: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:97: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_view()’:
+mainwindowder.cpp:184: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:184: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:184: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp:188: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:188: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:188: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp: At global scope:
+mainwindowder.cpp:264: warning: unused parameter ‘row’
+mainwindowder.cpp:264: warning: unused parameter ‘col’
+mainwindowder.cpp:264: warning: unused parameter ‘mousePos’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_sp_set_quant_fact()’:
+mainwindowder.cpp:290: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:291: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:298: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_sp_set_quant_breach()’:
+mainwindowder.cpp:316: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:317: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:324: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_clicked_box(int, int, int, const QPoint&)’:
+mainwindowder.cpp:344: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:345: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:350: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:332: warning: unused variable ‘ok’
+mainwindowder.cpp: At global scope:
+mainwindowder.cpp:330: warning: unused parameter ‘row’
+mainwindowder.cpp:330: warning: unused parameter ‘col’
+mainwindowder.cpp:330: warning: unused parameter ‘mousePos’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_close_nochek()’:
+mainwindowder.cpp:373: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:374: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:378: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:380: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_lostFocus()’:
+mainwindowder.cpp:419: warning: unused variable ‘i’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_reset_revise()’:
+mainwindowder.cpp:426: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:427: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:431: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_upload()’:
+mainwindowder.cpp:440: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:441: error: no matching function for call to ‘Q3SqlSelectCursor::Q3SqlSelectCursor(const QString, QSqlDatabase*&)’
+/usr/include/qt4/Qt3Support/q3sqlselectcursor.h:61: note: candidates are: Q3SqlSelectCursor::Q3SqlSelectCursor(const Q3SqlSelectCursor&)
+/usr/include/qt4/Qt3Support/q3sqlselectcursor.h:60: note:                 Q3SqlSelectCursor::Q3SqlSelectCursor(const QString&, QSqlDatabase)
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btnok_identuser()’:
+mainwindowder.cpp:505: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:506: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:512: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:514: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_search()’:
+mainwindowder.cpp:581: error: no match for ‘operator=’ in ‘dtbegin = ((mainwindowder*)this)->mainwindowder::<anonymous>.frmmain::<anonymous>.Ui::frmmain::<anonymous>.Ui_frmmain::date_begin->Q3DateEdit::date()’
+/usr/include/qt4/QtCore/qdatetime.h:225: note: candidates are: QDateTime& QDateTime::operator=(const QDateTime&)
+mainwindowder.cpp:583: error: no match for ‘operator=’ in ‘dtend = ((mainwindowder*)this)->mainwindowder::<anonymous>.frmmain::<anonymous>.Ui::frmmain::<anonymous>.Ui_frmmain::dateend->Q3DateEdit::date()’
+/usr/include/qt4/QtCore/qdatetime.h:225: note: candidates are: QDateTime& QDateTime::operator=(const QDateTime&)
+mainwindowder.cpp:585: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:586: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:592: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_back()’:
+mainwindowder.cpp:611: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:612: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:616: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::loaduserforident()’:
+mainwindowder.cpp:651: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:652: error: no matching function for call to ‘Q3SqlSelectCursor::Q3SqlSelectCursor(const char [21], QSqlDatabase*&)’
+/usr/include/qt4/Qt3Support/q3sqlselectcursor.h:61: note: candidates are: Q3SqlSelectCursor::Q3SqlSelectCursor(const Q3SqlSelectCursor&)
+/usr/include/qt4/Qt3Support/q3sqlselectcursor.h:60: note:                 Q3SqlSelectCursor::Q3SqlSelectCursor(const QString&, QSqlDatabase)
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_doubleClicked(int, int, int, const QPoint&)’:
+mainwindowder.cpp:668: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:669: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:675: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:677: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: At global scope:
+mainwindowder.cpp:664: warning: unused parameter ‘col’
+mainwindowder.cpp:664: warning: unused parameter ‘button’
+mainwindowder.cpp:664: warning: unused parameter ‘mousePos’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_doubleClicked_to_proc(int, int, int, const QPoint&)’:
+mainwindowder.cpp:689: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:690: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:695: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:697: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: At global scope:
+mainwindowder.cpp:685: warning: unused parameter ‘col’
+mainwindowder.cpp:685: warning: unused parameter ‘button’
+mainwindowder.cpp:685: warning: unused parameter ‘mousePos’
+mainwindowder.cpp:703: warning: unused parameter ‘row’
+mainwindowder.cpp:703: warning: unused parameter ‘col’
+mainwindowder.cpp:703: warning: unused parameter ‘button’
+mainwindowder.cpp:703: warning: unused parameter ‘mousePos’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_begin_chek()’:
+mainwindowder.cpp:726: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:727: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:734: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:746: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:755: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_back_doct()’:
+mainwindowder.cpp:776: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:777: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:781: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_btn_close()’:
+mainwindowder.cpp:790: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:791: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:795: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:797: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::CurrentSelectionOnTable()’:
+mainwindowder.cpp:815: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:815: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:815: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp: In member function ‘void mainwindowder::CurrentOnTable()’:
+mainwindowder.cpp:838: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:838: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:838: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp: In member function ‘void mainwindowder::CurrentSelectionOnTable_t()’:
+mainwindowder.cpp:868: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:868: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:868: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp: In member function ‘void mainwindowder::CurrentSelectionOnTable_t_box()’:
+mainwindowder.cpp:919: error: expected type-specifier before ‘QSqlCursor’
+mainwindowder.cpp:919: error: cannot convert ‘int*’ to ‘Q3SqlCursor*’ in assignment
+mainwindowder.cpp:919: error: expected ‘;’ before ‘QSqlCursor’
+mainwindowder.cpp: In member function ‘void mainwindowder::slot_edtindata()’:
+mainwindowder.cpp:960: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:961: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:969: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:971: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘QString mainwindowder::getinfo()’:
+mainwindowder.cpp:1025: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:1026: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:1030: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:1032: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::artplus()’:
+mainwindowder.cpp:1088: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:1089: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:1097: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:1099: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: In member function ‘void mainwindowder::artminus()’:
+mainwindowder.cpp:1116: error: cannot convert ‘QSqlDatabase’ to ‘QSqlDatabase*’ in assignment
+mainwindowder.cpp:1117: error: no matching function for call to ‘QSqlQuery::QSqlQuery(const QString::Null&, QSqlDatabase*&)’
+/usr/include/qt4/QtSql/qsqlquery.h:69: note: candidates are: QSqlQuery::QSqlQuery(const QSqlQuery&)
+/usr/include/qt4/QtSql/qsqlquery.h:68: note:                 QSqlQuery::QSqlQuery(QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:67: note:                 QSqlQuery::QSqlQuery(const QString&, QSqlDatabase)
+/usr/include/qt4/QtSql/qsqlquery.h:66: note:                 QSqlQuery::QSqlQuery(QSqlResult*)
+mainwindowder.cpp:1125: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp:1127: error: invalid use of incomplete type ‘struct QSqlError’
+/usr/include/qt4/QtSql/qsqldatabase.h:57: error: forward declaration of ‘struct QSqlError’
+mainwindowder.cpp: At global scope:
+mainwindowder.cpp:1139: warning: unused parameter ‘row’
+mainwindowder.cpp:1139: warning: unused parameter ‘col’
+make: *** [mainwindowder.o] Error 1
+debian@debian:~/develop/cashserv4/src$ ^C
+debian@debian:~/develop/cashserv4/src$ 
+

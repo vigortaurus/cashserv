@@ -1,0 +1,3 @@
+ALTER TABLE `cashsrv`.`load_document_t` ADD COLUMN `numstor` VARCHAR(20)  NOT NULL AFTER `price`,
+ ADD COLUMN `storplace` VARCHAR(20)  NOT NULL AFTER `numstor`,
+ ADD COLUMN `complarea` VARCHAR(20)  NOT NULL AFTER `storplace`;

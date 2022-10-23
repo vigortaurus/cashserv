@@ -1,0 +1,48 @@
+#!/bin/bash
+indir="/home/nick/cashserv/bin/in"
+ftpserv="192.168.100.114"
+ftpdir="/home/sapsystem/shops/1/in"
+ftpuser="oper"
+ftppasswd="''"
+echo "start"
+#ALTER DATABASE cashsrv  CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ftp_get()
+{
+    #1 адрес сервера 2 имя пользователя 3 пароль 4 папка на сервере
+    tempfile=ftp_$$
+    echo "user $2 $3
+    cd $4
+    lcd $indir		
+    mget update.zip
+    mdelete update.zip
+    close
+    exit">>$tempfile
+    ftp -i -n $1 <./$tempfile	
+    rm $indir/$tempfile
+}
+cd $indir;
+    #скачать данные с ftp сервера
+    ftp_get $ftpserv $ftpuser $ftppasswd $ftpdir
+    #резезрвное копирование
+    cp $indir/* $indir/../bak/
+    #распаковка архивов
+    for zips in `ls|grep .[Zz][Ii][Pp]$`
+    do
+	unzip -o $zips
+	echo data:  $ddate
+	rm -f $zips
+	mv -f -b $indir/cashserv $indir/../cashserv
+	mv -f -b $indir/execload $indir/../execload
+	mv -f -b $indir/loaddatainfile $indir/../loaddatainfile	
+	mv -f -b $indir/uploadintofile $indir/../uploadintofile
+	mysql <$indir/cashsrv_db.sql
+	rm $indir/cashsrv_db.sql
+    done
+
+echo "stop"
+
+
+
+#Скрипт загрузки файлов
+

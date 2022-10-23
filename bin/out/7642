@@ -1,0 +1,6 @@
+use cashsrv;
+    select numdoc, barcod, flag, textstatus
+    local into outfile '/home/osboxes/develop/cashserv/bin/out/BAD_box_0080787888.xls' 
+    fields terminated by '	'
+    from box_barcod 
+    where numdoc='0080787888';

@@ -1,0 +1,12 @@
+#!/bin/bash
+indir="/home/osboxes/develop/cashserv/bin/in"
+ftpserv="192.168.100.114"
+ftpdir="/home/sapsystem/shops/700/in"
+ftpuser="oper"
+ftppasswd="''"
+echo "start"
+cd $indir/..
+./execload $indir $ftpserv $ftpdir $ftpuser $ftppasswd
+echo "stop"
+#Скрипт загрузки файлов
+

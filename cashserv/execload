@@ -1,0 +1,138 @@
+#!/bin/bash
+indir=$1
+ftpserv=$2
+ftpdir=$3
+ftpuser=$4
+ftppasswd=$5
+echo "start"
+#ALTER DATABASE cashsrv  CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+load_data_infile()
+{
+    echo "load doc $1 $2 $3 $4"
+    echo "use cashsrv; 
+    load data infile '$1' into table load_document_t 
+    fields terminated by ';'
+    lines terminated by '\n'
+    (npp, cod_good, namegood, quant, price, numstor, storplace, complarea);
+    update load_document_t set numdoc='$2' , datedoc= '$3' , nummag='$4'
+    where  datedoc='';
+    call sp_load_doc;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+    #'/home/nick/cashserv/bin/in/N022_0080048169.csv'
+}
+load_data_infile_barcod()
+{
+    echo "load barcod"
+    echo "use cashsrv; 
+    load data infile '$1' into table load_barcod
+    fields terminated by ';'
+    lines terminated by '\n'
+    (cod_good, barcod, numdoc);
+    update load_barcod set numdoc='$2' where numdoc='';
+    call sp_load_barcod;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+    #'/home/nick/cashserv/bin/in/N022_0080048169.csv'
+}
+load_data_infile_box_barcod()
+{
+    echo "load barcod"
+    echo "use cashsrv; 
+    load data infile '$1' into table load_box_barcod
+    fields terminated by ';'
+    lines terminated by '\n'
+    (numdoc, barcod);
+    call sp_load_box_barcod;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+    #'/home/nick/cashserv/bin/in/N022_0080048169.csv'
+}
+truncate_load_table_documnetnt_t()
+{
+    echo "use cashsrv;
+    truncate table load_document_t;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+}
+truncate_load_table_barcode()
+{
+    echo "use cashsrv;
+    truncate table load_barcod;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+}
+truncate_load_table_box_barcode()
+{
+    echo "use cashsrv;
+    truncate table load_box_barcod;">>$$
+    mysql --user=root --password=''< ./$$;
+    rm $indir/$$
+}
+ftp_get()
+{
+	if /bin/ping -c 3 $ftpserv &> /dev/null  
+	then
+	    #1 адрес сервера 2 имя пользователя 3 пароль 4 папка на сервере
+	    tempfile=ftp_$$
+	    echo "user $2 $3
+	    cd $4
+	    lcd $indir		
+	    mget Z*
+	    mdelete Z*
+	    close
+	    exit">>$tempfile
+	    ftp -p -i -n $1 <./$tempfile	
+	    rm $indir/$tempfile
+	fi
+}
+cd $indir;
+    #скачать данные с ftp сервера
+    ftp_get $ftpserv $ftpuser $ftppasswd $ftpdir
+    #резезрвное копирование
+    cp $indir/* $indir/bak/
+    #распаковка архивов
+    for zips in `ls|grep .[Zz][Ii][Pp]$`
+    do
+	unzip -o $zips
+	rm -f $zips
+	    #загрузка данных по накладным
+	    for ns in `ls|grep [Nn] | grep [Cc][Ss][Vv]`
+	    do
+		nummag=`echo ${ns:1:3}`
+		numdoc=`echo ${ns:5:10}`		
+		ddate=`echo ${ns:16:8}`
+		echo numdoc:  $numdoc 
+		echo nummag: $nummag
+		echo ddate: $ddate
+		load_data_infile $indir/$ns $numdoc $ddate $nummag	
+		rm -f $ns
+		truncate_load_table_documnetnt_t
+	    done
+	    #загрузка данных по штрикодам
+	    for bs in `ls|grep [Bb] | grep [Cc][Ss][Vv]`
+	    do
+		numdoc=`echo $bs |grep -o _..........| tr -d "_" | tr -d ".csv"`
+		echo numdoc barcod:  $numdoc
+		load_data_infile_barcod $indir/$bs $numdoc	
+		rm -f $bs
+		truncate_load_table_barcode
+	    done
+	    #загрузка данных по коробам
+	    for ks in `ls|grep [Kk] | grep [Cc][Ss][Vv]`
+	    do
+		load_data_infile_box_barcod $indir/$ks	
+		rm -f $ks
+		truncate_load_table_box_barcode
+	    done
+	    
+	truncate_load_table_documnetnt_t
+    done
+
+echo "stop"
+
+
+
+#Скрипт загрузки файлов
+

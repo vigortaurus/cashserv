@@ -1,0 +1,90 @@
+#!/bin/bash
+indir=$1
+ftp=${1/out/ftp}
+ftp_good='250 CWD command successful'
+ftp_put()
+{
+if /bin/ping -c 3 $ftpserv &> /dev/null 
+then
+    #1 адрес сервера 2 имя пользователя 3 пароль 4 папка на сервере
+    tempfile=ftp_$$
+    echo "user $ftpuser $ftppasswd
+    cd $ftpdir
+    lcd $ftp
+    mput *.xls
+    close
+    exit">>$tempfile
+    ftp -p -i -v -n $ftpserv <./$tempfile>>$ftp/"logfile_`date +%Y%m%d_%H%M%S`"
+    grep -q "$ftp_good" "$ftp/logfile_`date +%Y%m%d_%H%M%S`"
+    if [ $? -eq 0 ]
+    then
+	    rm $ftp/*.xls	
+    fi	
+    rm $indir/$tempfile
+
+fi
+}
+upload_data_into_file()
+{
+    cd $1
+    echo "use cashsrv;
+    select h.textstatus as st, t.npp as npp, t.numdoc as numdoc , date(h.date) as dd, t.cod_good as cod_good,
+    t.name as name, t.quant as quant, ifnull(t.quant_fact,0) as quant_fact,
+    t.quant - ifnull(t.quant_fact,0) as quant_diff, ifnull(t.quant_breach,0) as quant_breach
+    into outfile '$1/result_$3_$2.csv' 
+    fields terminated by '	'
+    from document_t as t
+    inner join document_h as h on h.numdoc=t.numdoc 
+    and (h.status=1 or h.status=3)
+    where t.quant<> ifnull(t.quant_fact,0)and t.numdoc='$2';">>$$
+    mysql --user=root --password=''<./$$
+    rm ./$$    
+    cd $1
+    echo "use cashsrv;
+    select numdoc, barcod, flag, textstatus
+    into outfile '$1/$3_box_$2.xls' 
+    fields terminated by '	'
+    from box_barcod 
+    where numdoc='$2';">>$$
+    mysql --user=root --password=''<./$$
+    rm ./$$    
+    
+}
+cd $1
+echo $1
+loaddfile=${1/out/}loaddatainfile
+#loaddfile='/home/nick/cashserv/bin/loaddatainfile'
+upload_data_into_file $1 $2 $3
+echo 'номер маг.	номер по пор	номер док	дата док.	код товара	 наименов	кол-во учет	кол-во факт	кол-во разность	BPAK'>> uploadfile
+cat $1/result_$3_$2.csv >> uploadfile
+iconv -f UTF-8 -t WINDOWS-1251 -c uploadfile -o $1/$3_$2.xls
+rm $1/result_$3_$2.csv
+rm uploadfile
+cp $1/$3_$2.xls $ftp
+cp $1/$3_box_$2.xls $ftp
+echo $loaddfile
+ftpdir=`cat $loaddfile | grep 'ftpdir='`
+ftpdir=${ftpdir/in/out}
+ftpdir=${ftpdir/ftpdir=/}
+
+ftpserv=`cat $loaddfile | grep 'ftpserv='`
+ftpserv=${ftpserv/in/out}
+ftpserv=${ftpserv/ftpserv=/}
+ftpserv=${ftpserv//'"'/}
+
+ftpuser=`cat $loaddfile | grep 'ftpuser='`
+ftpuser=${ftpuser/in/out}
+ftpuser=${ftpuser/ftpuser=/}
+
+ftppasswd=`cat $loaddfile | grep 'ftppasswd='`
+ftppasswd=${ftppasswd/in/out}
+ftppasswd=${ftppasswd/ftppasswd=/}
+
+ftp_put $ftpserv $ftpuser $ftppasswd $ftpdir
+
+
+
+
+
+
+
