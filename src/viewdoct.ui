@@ -167,8 +167,4 @@
     </connection>
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>mycustomqtable.h</includehint>
-    <includehint>mycustomqtable.h</includehint>
-</includehints>
 </UI>

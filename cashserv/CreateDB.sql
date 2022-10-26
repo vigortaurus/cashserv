@@ -112,6 +112,11 @@ CREATE TABLE `cassir` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+/*!40000 ALTER TABLE `cassir` DISABLE KEYS */;
+LOCK TABLES `cassir` WRITE;
+INSERT INTO `cashsrv`.`cassir` VALUES  ('1','admin','1');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `cassir` ENABLE KEYS */;
 --
 -- Table structure for table `cassir_cur`
 --

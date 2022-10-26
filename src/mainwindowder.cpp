@@ -152,7 +152,7 @@ mainwindowder::mainwindowder(QWidget* parent, const char* name, Qt::WFlags fl,QS
 	tbl_doct->numfield=6;
 	tbl_doc->numfield=2;
 	tbl_box->numfield=2;
-	if(strelf !=strload)
+    /*if(strelf !=strload)
 		QMessageBox::information( this, tr("Сообщение."),
 			tr("Несоответсвие версии загрузочного скрипта execload. Свяжитесь со службой поддержки."));
 	if(strelf!=strupload)
@@ -161,7 +161,7 @@ mainwindowder::mainwindowder(QWidget* parent, const char* name, Qt::WFlags fl,QS
 	if(strelf!=strdvversion)
 		QMessageBox::information( this, tr("Сообщение."),
 			tr("Несоответсвие версии  базы данных cashsrv. Свяжитесь со службой поддержки."));
-
+*/
 	grpbox->setExclusive(true);
 	
 
